@@ -69,7 +69,7 @@ def beamformer_subject(subject):
             # apply beamformer
             stc =  beamformer.apply_lcmv_raw(raw, filters, verbose=False)
             source_data = stc.data
-            source_data_orth = zscore(np.squeeze(symmetric_orth(np.expand_dims(source_data,0))), 1)
+            source_data_orth = zscore(symmetric_orth(source_data), 1)
             
             # make source raw
             info = mne.create_info(list(names), raw.info['sfreq'], 'misc', verbose=False)
